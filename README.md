@@ -25,7 +25,7 @@ FUSION/
 └── tests/                 # unit / smoke tests
     └── test_inference.py
 ```
-## Dependency
+## 🛠️ Dependencies
 
 #### Python core 
 - python ≥ 3.9, numpy ≥ 1.24, pandas ≥ 2.0, scipy ≥ 1.10, h5py ≥ 3.10, scikit‑learn ≥ 1.3, tqdm ≥ 4.66, rpy2 ≥ 3.5, matplotlib ≥ 3.8, seaborn ≥ 0.13
