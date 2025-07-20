@@ -40,7 +40,7 @@ FUSION/
 
 ## 🏃‍♂️ Using FUSION – step‑by‑step
 
-<details>
+
 <summary><strong>1 · Clone&nbsp;&amp;&nbsp;install</strong></summary>
 
 ```bash
@@ -53,9 +53,7 @@ conda env create -n fusion
 conda activate fusion
 
 ```
-</details>
 
-<details>
 <summary><strong>2 · Running&nbsp;&amp;&nbsp;Testing</strong></summary>
 
 Before running FUSION, prepare the inputs below:
@@ -84,14 +82,14 @@ adata_list = [
 sc_adata = sc.read_h5ad("dataset/SC_data/scref_adata.h5ad")
 
 from R_initialization import FUSION_Init    
-FUSION_Init(adata_list, sc_adata, domain_size)
+FUSION_Init(adata_list, sc_adata, domain_size=7)
 
 from main_ref import FUSION_preprocess, FUSION_main
 log_fc_cut = 1.5         # log‑fold‑change threshold for marker filtering
 FUSION_preprocess(adata_list, log_fc_cut)
 
-out, emb = FUSION_main(adata_list, embed_dim=64, domain_size=7)
+out, emb = FUSION_main(adata_list, embed_dim=50, domain_size=7)
 ```
 
 For an illustrative example on DLPFC, see the Jupyter notebook: `Jupyter notebook` for details.
-</details>
+
