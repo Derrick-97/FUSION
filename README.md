@@ -65,8 +65,7 @@ Before running FUSION, prepare the inputs below:
 | **SRT slides** | `AnnData` (`.h5ad`) with <br>• `.X` = raw spot‑by‑gene counts<br>• `adata.obsm["spatial"]` = `[[x, y], …]` | `dataset/SRT_data/151507_adata.h5ad` |
 | **scRNA‑seq reference** | `AnnData` with `obs["cellType"]` labels | `dataset/SC_data/scref_adata.h5ad` |
 
-Group slides that belong to the **same patient / condition** into an inner list;  
-collect those inner lists into `adata_list`, e.g.
+Group slides that belong to the **same patient / condition** into an inner list; Ccollect those inner lists into `adata_list`, e.g. in DLPFC:
 
 ```python
 import scanpy as sc
