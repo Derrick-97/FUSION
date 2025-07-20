@@ -58,7 +58,7 @@ conda activate fusion
 <details>
 <summary><strong>2 · Running&nbsp;&amp;&nbsp;Testing</strong></summary>
 
-Before you run FUSION, please prepare following input format:
+Before running FUSION, prepare the inputs below:
 
 ---
 
