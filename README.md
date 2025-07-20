@@ -82,7 +82,14 @@ adata_list = [
      for sid in ("151673","151674","151675","151676")]
 ]
 sc_adata = sc.read_h5ad("dataset/SC_data/scref_adata.h5ad")
-from main_ref import FUSION_main
+
+from R_initialization import FUSION_Init    
+FUSION_Init(adata_list, sc_adata, domain_size)
+
+from main_ref import FUSION_preprocess, FUSION_main
+log_fc_cut = 1.5         # log‑fold‑change threshold for marker filtering
+FUSION_preprocess(adata_list, log_fc_cut)
+
 out, emb = FUSION_main(adata_list, embed_dim=64, domain_size=7)
 ```
 
