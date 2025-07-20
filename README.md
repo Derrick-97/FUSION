@@ -38,8 +38,9 @@ FUSION/
 
 
 
-## 🚀 Quick Start
+## 🏃‍♂️ Using FUSION – step‑by‑step
 
+<details>
 <summary><strong>1 · Clone&nbsp;&amp;&nbsp;install</strong></summary>
 
 ```bash
@@ -52,24 +53,38 @@ conda env create -n fusion
 conda activate fusion
 
 ```
+</details>
 
+<details>
 <summary><strong>2 · Running&nbsp;&amp;&nbsp;Testing</strong></summary>
 
-Key Inputs:
+Before you run FUSION, please prepare following input format:
 
-1. sp_expr​​: A ​​spot-by-gene matrix​​ (spatial transcriptomics data in matrix/dataframe format).
-2. sp_pos​​: A ​​2D spatial coordinate matrix​​ (spot locations in X-Y coordinates).
-3. top_DEGs​​: A ​​list of differentially expressed genes​​ (cell-type marker genes).
-4. Num_topic​​ (int): Number of spatial domains to infer.
-5. Num_HVG​​ (int): Number of highly variable genes (HVGs) to include in training.
-6. dim_embed​​ (int): Latent dimension for hierarchical factor modeling.
+---
 
-Marker Gene Options: 
+| Object | Required fields | Example path |
+|--------|-----------------|--------------|
+| **SRT slides** | `AnnData` (`.h5ad`) with <br>• `.X` = raw spot‑by‑gene counts<br>• `adata.obsm["spatial"]` = `[[x, y], …]` | `dataset/SRT_data/151507_adata.h5ad` |
+| **scRNA‑seq reference** | `AnnData` with `obs["cellType"]` labels | `dataset/SC_data/scref_adata.h5ad` |
 
-1. top_marker_num​​ (int): Only use the ​​top n marker genes​​ per cell type from top_DEGs.
-2. fixed_marker_list​​ (logical):
+Group slides that belong to the **same patient / condition** into an inner list;  
+collect those inner lists into `adata_list`, e.g.
 
-    FALSE → Use top top_marker_num genes per cell type.
-    TRUE → Use all genes in top_DEGs.
+```python
+import scanpy as sc
+# three patients, four slides each
+adata_list = [
+    [sc.read_h5ad(f"dataset/SRT_data/{sid}_adata.h5ad")
+     for sid in ("151507","151508","151509","151510")],
+    [sc.read_h5ad(f"dataset/SRT_data/{sid}_adata.h5ad")
+     for sid in ("151669","151670","151671","151672")],
+    [sc.read_h5ad(f"dataset/SRT_data/{sid}_adata.h5ad")
+     for sid in ("151673","151674","151675","151676")]
+]
+sc_adata = sc.read_h5ad("dataset/SC_data/scref_adata.h5ad")
+from main_ref import FUSION_main
+out, emb = FUSION_main(adata_list, embed_dim=64, domain_size=7)
+```
 
-For a quick start example, see the `tutorial/MOB.ipynb`
+For an illustrative example on DLPFC, see the Jupyter notebook: `Jupyter notebook` for details.
+</details>
