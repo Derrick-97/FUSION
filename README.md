@@ -1,6 +1,6 @@
 # Efficient Latent-Topic Modeling Unifies Cell-Type Deconvolution and Domain Discvoery for Multi-Section Spatial Transcriptomics
 
-FUSION is a fast, unified method for multi-section SRT data analysis, which leverages a matched single-cell RNA reference to unify deconvolution, domain detection, and cross-section integration. FUSION directly models each sequencing read as arising from a latent topic that captures the transcriptomic programme of a reference cell type. Aggregating the read-level topic probabilities for each spot forms cell-type compositional embeddings whose softmax normalization yields cell-type proportions. Clustering directly in this compositional embedding space delivers interpretable domain detection while automatically aligning homologous regions across sections.
+FUSION is a fast method for multi‑section SRT that, with a matched scRNA‑seq reference, performs cell‑type deconvolution, spatial‑domain detection, and cross‑section alignment in a single probabilistic framework. Each read is assigned to a latent topic representing a reference cell type; spot‑level topic aggregates yield cell‑type proportions, and clustering these proportions reveals coherent spatial domains shared across sections.
 
 ## 📂 Repository Layout
 ```text
